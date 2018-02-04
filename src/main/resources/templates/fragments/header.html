@@ -5,7 +5,7 @@
 
     <!-- this is header -->
     <div th:fragment="header">
-        <title  th:attr="data-custom=#{thymeleaf.app.title}">Shop</title>
+        <title  th:attr="data-custom=#{thymeleaf.app.title}">营销活动</title>
         <!--TODO proveriti jel moguce ubaciti ovu vrednost-->
 
         <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
@@ -28,7 +28,7 @@
     <nav class="navbar navbar-inverse">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" th:href="@{/home}">Shop</a>
+                <a class="navbar-brand" th:href="@{/home}">营销活动</a>
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <!-- show shoppingCart only if user is not yet authenticated -->

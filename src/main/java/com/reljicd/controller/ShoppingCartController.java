@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -21,8 +23,7 @@ public class ShoppingCartController {
     @Autowired
     private ProductService productService;
 
-
-    @GetMapping("/shoppingCart")
+    @RequestMapping(value = "/shoppingCart", method = RequestMethod.GET)
     public ModelAndView shoppingCart() {
         ModelAndView modelAndView = new ModelAndView("shoppingCart");
         modelAndView.addObject("products", shoppingCartService.getProductsInCart());
@@ -30,19 +31,19 @@ public class ShoppingCartController {
         return modelAndView;
     }
 
-    @GetMapping("/shoppingCart/addProduct/{productId}")
+    @RequestMapping(value = "/shoppingCart/addProduct/{productId}", method = RequestMethod.GET)
     public ModelAndView addProductToCart(@PathVariable("productId") Long productId) {
         shoppingCartService.addProduct(productService.findById(productId));
         return shoppingCart();
     }
 
-    @GetMapping("/shoppingCart/removeProduct/{productId}")
+    @RequestMapping(value = "/shoppingCart/removeProduct/{productId}", method = RequestMethod.GET)
     public ModelAndView removeProductFromCart(@PathVariable("productId") Long productId) {
         shoppingCartService.removeProduct(productService.findById(productId));
         return shoppingCart();
     }
 
-    @GetMapping("/shoppingCart/checkout")
+    @RequestMapping(value = "/shoppingCart/checkout", method = RequestMethod.GET)
     public ModelAndView checkout() {
         try {
             shoppingCartService.checkout();

@@ -4,6 +4,7 @@ import com.reljicd.model.Product;
 import com.reljicd.service.ProductService;
 import com.reljicd.util.Pager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
@@ -29,6 +30,10 @@ public class HomeController {
     @Autowired
     private ProductService productService;
 
+
+    @Value("${image.logo.url}")
+    private String logoImageUrl;
+
     @RequestMapping(value = {"/home","/"}, method = RequestMethod.GET)
     public ModelAndView home(@RequestParam("pageSize") Optional<Integer> pageSize,
                              @RequestParam("page") Optional<Integer> page) {
@@ -51,6 +56,7 @@ public class HomeController {
         modelAndView.addObject("selectedPageSize", evalPageSize);
         modelAndView.addObject("pageSizes", PAGE_SIZES);
         modelAndView.addObject("pager", pager);
+        modelAndView.addObject("logoImageUrl",logoImageUrl);
         modelAndView.setViewName("home");
         return modelAndView;
     }

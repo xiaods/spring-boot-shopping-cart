@@ -5,6 +5,7 @@
 
     <!-- this is header -->
     <div th:fragment="header">
+
         <title  th:attr="data-custom=#{thymeleaf.app.title}">营销活动</title>
         <!--TODO proveriti jel moguce ubaciti ovu vrednost-->
 
@@ -27,6 +28,7 @@
 <div th:fragment="navbar">
     <nav class="navbar navbar-inverse">
         <div class="container">
+            <img th:src="${logoImageUrl}"  width="200px" />
             <div class="navbar-header">
                 <a class="navbar-brand" th:href="@{/home}">营销活动</a>
             </div>

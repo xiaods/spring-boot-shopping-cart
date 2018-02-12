@@ -1,13 +1,11 @@
 spring:
   application:
-    name: NullTest
-
-
+    name: cart
 hawk:
   etcd:
-    endpoints: http://192.168.31.42:2379
+    endpoints: http://bootstrap-etcd.hawk.svc:2379
   client:
     config:
-      env: DEV
+      env: demo
       retry:
         maxAttempts: 3

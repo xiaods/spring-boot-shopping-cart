@@ -5,6 +5,7 @@ import com.reljicd.service.ProductService;
 import com.reljicd.util.Pager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,7 @@ import java.util.Optional;
  * Created by Dusan on 19-May-17.
  */
 @Controller
+@RefreshScope
 public class HomeController {
 
     private static final int BUTTONS_TO_SHOW = 5;
@@ -33,6 +35,9 @@ public class HomeController {
 
     @Value("${image.logo.url}")
     private String logoImageUrl;
+
+    @Value("${dynamic.notify.message}")
+    private String dyamicNotify;
 
     @RequestMapping(value = {"/home","/"}, method = RequestMethod.GET)
     public ModelAndView home(@RequestParam("pageSize") Optional<Integer> pageSize,
@@ -57,6 +62,7 @@ public class HomeController {
         modelAndView.addObject("pageSizes", PAGE_SIZES);
         modelAndView.addObject("pager", pager);
         modelAndView.addObject("logoImageUrl",logoImageUrl);
+        modelAndView.addObject("dyamicNotify",dyamicNotify);
         modelAndView.setViewName("home");
         return modelAndView;
     }

@@ -7,6 +7,7 @@
 <body>
 
 <div th:fragment="products">
+    <div th:text="${dyamicNotify}"></div>
     <div class="panel-default well" th:each="product : ${products}">
         <div class="panel-heading">
             <h1><a th:text="${product.name}" th:href="@{'/product/' + ${product.id}}">Title</a></h1>
